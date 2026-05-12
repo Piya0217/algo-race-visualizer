@@ -5,20 +5,22 @@ export function bfs(grid, startNode, endNode) {
 
   while (queue.length > 0) {
     const current = queue.shift();
+    visitedNodes.push(current);
 
-    if (current === endNode) return visitedNodes;
+    if (current.row === endNode.row && current.col === endNode.col) {
+      return { visitedNodes, found: true };
+    }
 
     const neighbors = getNeighbors(current, grid);
     for (const neighbor of neighbors) {
       if (!neighbor.isVisited && !neighbor.isWall) {
         neighbor.isVisited = true;
         neighbor.previousNode = current;
-        visitedNodes.push(neighbor);
         queue.push(neighbor);
       }
     }
   }
-  return visitedNodes;
+  return { visitedNodes, found: false };
 }
 
 export function getShortestPath(endNode) {
