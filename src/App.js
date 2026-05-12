@@ -1,14 +1,22 @@
 import React from 'react';
-import Grid from './components/Grid';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Landing from './pages/Landing';
+import Setup from './pages/Setup';
+import CodeEditor from './pages/CodeEditor';
+import Race from './pages/Race';
+import Scoreboard from './pages/Scoreboard';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-900">
-      <h1 className="text-4xl font-bold text-white text-center pt-8">
-        AlgoRace 🏁
-      </h1>
-      <Grid />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/setup" element={<Setup />} />
+        <Route path="/editor" element={<CodeEditor />} />
+        <Route path="/race" element={<Race />} />
+        <Route path="/scoreboard" element={<Scoreboard />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
