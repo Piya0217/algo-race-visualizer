@@ -2,6 +2,7 @@ import React from 'react';
 import { bfs, getShortestPath } from '../algorithm/bfs.js';
 import { dfs } from '../algorithm/dfs.js';
 import { aStar } from '../algorithm/aStar.js';
+import { generateMaze } from '../algorithm/maze.js';
 
 const ROWS = 20;
 const COLS = 15;
@@ -232,13 +233,20 @@ function Grid() {
         ))}
       </div>
 
-      <div className="flex gap-4 mb-8">
+      <div className="flex gap-4 mb-8 flex-wrap justify-center">
         <button
           onClick={startRace}
           disabled={isRacing}
           className="px-8 py-3 bg-green-500 text-white font-bold text-lg rounded-lg hover:bg-green-600 disabled:opacity-50"
         >
           🏁 Start Race
+        </button>
+        <button
+          onClick={() => setWallGrid(generateMaze(wallGrid))}
+          disabled={isRacing}
+          className="px-8 py-3 bg-purple-500 text-white font-bold text-lg rounded-lg hover:bg-purple-600 disabled:opacity-50"
+        >
+          🌀 Generate Maze
         </button>
         <button
           onClick={resetAll}
