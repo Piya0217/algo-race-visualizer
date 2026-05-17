@@ -240,7 +240,9 @@ function Race() {
       } catch (e) {}
     }
     return list;
-  }, []);
+  
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [config.ownAlgo, userCode]);
 
   const handleCellClick = (row, col) => {
     if (isRacing || config.maze !== 'custom') return;
