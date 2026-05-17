@@ -40,7 +40,7 @@ function detectComplexity(code) {
 const conclusions = {
   BFS: (results) => {
     const bfs = results.find(r => r.name === 'BFS');
-    const astar = results.find(r => r.name === 'A*');
+    const _astar = results.find(r => r.name === 'A*');
     return `BFS won by exploring nodes level by level using a Queue (FIFO). It visited ${bfs?.nodes} nodes and found the shortest path of length ${bfs?.pathLen}. While BFS guarantees the shortest path, it explores more nodes than A* because it has no heuristic — it treats all directions equally. On this maze layout, that thoroughness paid off!`;
   },
   DFS: (results) => {

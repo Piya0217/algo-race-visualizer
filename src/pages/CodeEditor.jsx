@@ -108,7 +108,8 @@ function CodeEditor() {
 
     let fn;
     try {
-      fn = new Function(`${code}; return myAlgo;`)();
+      // eslint-disable-next-line no-new-func
+  fn = new Function(`${code}; return myAlgo;`)();
     } catch (err) {
       setStatus('error');
       if (err instanceof SyntaxError) {

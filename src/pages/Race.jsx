@@ -147,7 +147,8 @@ function RaceGrid({ algo, wallGrid, isRacing, onFinish }) {
     }, 80);
 
     return () => clearInterval(visitInterval);
-  }, [isRacing]);
+  },// eslint-disable-next-line react-hooks/exhaustive-deps
+  [isRacing]);
 
   const getCellColor = (cell) => {
     if (cell.isStart) return '#22c55e';
@@ -219,7 +220,7 @@ function Race() {
   const [isRacing, setIsRacing] = React.useState(false);
   const [raceKey, setRaceKey] = React.useState(0);
   const [winner, setWinner] = React.useState(null);
-  const [results, setResults] = React.useState([]);
+  const [, setResults] = React.useState([]);
   const finishedRef = React.useRef([]);
 
   // Build algos list
@@ -227,6 +228,7 @@ function Race() {
     const list = [...BASE_ALGOS];
     if (config.ownAlgo && userCode) {
       try {
+        // eslint-disable-next-line no-new-func
         const fn = new Function(`${userCode}; return myAlgo;`)();
         list.push({
           name: 'Mine',
